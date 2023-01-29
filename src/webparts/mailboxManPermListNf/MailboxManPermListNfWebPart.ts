@@ -41,7 +41,9 @@ export default class MailboxManPermListNfWebPart extends BaseClientSideWebPart<I
           <fluent-text-field id="mailboxPermissionSearch" label="Search" placeholder="testmailbox@${this._getUserDomain()}"></fluent-text-field>
           <fluent-button data-action="startSearch" id="mailboxPermissionSearchButton" appearance="accent">Search</fluent-button>
     </div>
-    <div id="mailboxPermissionGridContainer" class="${styles.mailboxPermissionContainer}"></div>
+    <center>
+      <div id="mailboxPermissionGridContainer" class="${styles.mailboxPermissionContainer}"></div>
+    </center>
     </section>`;
 
     this._setButtonEventHandlers();

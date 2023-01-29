@@ -11,7 +11,9 @@ import styles from './MailboxManNfWebPart.module.scss';
 import * as strings from 'MailboxManNfWebPartStrings';
 
 import { allComponents, provideFluentDesignSystem } from '@fluentui/web-components';
-provideFluentDesignSystem().register(allComponents);
+provideFluentDesignSystem().register(
+  allComponents
+);
 
 import {
   AadHttpClient,
@@ -76,8 +78,16 @@ export default class MailboxManNfWebPart extends BaseClientSideWebPart<IMailboxM
         </div>
 
       </div>
-      <div id="mailboxPermissionContainer"></div>
-      <div id="calendarPermissionContainer"></div>
+      <fluent-tabs id="permissionTabs" activeid="mailboxaccess">
+        <fluent-tab id="mailboxaccess" style="margin: 0 auto">My shared mailbox access</fluent-tab>
+        <fluent-tab id="calendaraccess" style="margin: 0 auto">My shared calendar access</fluent-tab>
+        <fluent-tab-panel id="mailboxaccess">
+          <div id="mailboxPermissionContainer"></div>
+        </fluent-tab-panel>
+        <fluent-tab-panel id="calendaraccess">
+          <div id="calendarPermissionContainer"></div>
+        </fluent-tab-panel>
+      </fluent-tabs>
     </section>`;
 
     // set button event handlers after render
@@ -123,7 +133,7 @@ export default class MailboxManNfWebPart extends BaseClientSideWebPart<IMailboxM
     console.log(item);
 
     // show loading icon
-    document.getElementById('listitemdeleting' + index).innerHTML = '<fluent-progress-ring>Removing permissions...</fluent-progress-ring>';
+    document.getElementById('listitemdeleting' + index.toString()).innerHTML = '<fluent-progress-ring></fluent-progress-ring>';
 
     // use aadhttpclient to remove the mailbox permission
     this.context.aadHttpClientFactory.getClient('api://ca6525e8-f700-4f8b-95ab-053387edf950')
@@ -144,15 +154,16 @@ export default class MailboxManNfWebPart extends BaseClientSideWebPart<IMailboxM
   }
 
   private _renderMailboxPermissions(items: MailboxPermission[]): void {
-    let html: string = '<center><h3>Mailbox permissions</h3></center>';
+    let html: string = '';
     items.forEach((item: MailboxPermission) => {
       html += `
       <div id="listitem${findIndex(items, item)}">
         <ul class="${styles.list}">
           <li class="${styles.listItem}">
-            <span class="ms-font-l">Address: <strong>${item.PrimaryEmailAddress}</strong></span><p>Access level: <strong>${item.AccessLevel}</strong></p> <p>Permission via: <strong>${item.PermissionVia}</strong></p>
+            <span class="ms-font-l">Name: <strong>${item.DisplayName}</strong></span><br>
+            <span class="ms-font-l">Address: <strong>${item.PrimaryEmailAddress}</strong></span><br>Access level: <strong>${item.AccessLevel}</strong><br>Permission via: <strong>${item.PermissionVia}</strong><br>
             <fluent-button class="deleteButton" appearance="accent" data-action="remove" data-id="listitem${findIndex(items, item)}">Remove my access</fluent-button>
-            <div id="listitemdeleting${findIndex(items, item)}"></div>
+            <div class="" id="listitemdeleting${findIndex(items, item)}"></div>
           </li>
         </ul>
       </div>`;
@@ -189,13 +200,14 @@ export default class MailboxManNfWebPart extends BaseClientSideWebPart<IMailboxM
   }
 
   private _renderCalendarPermissions(items: CalendarPermission[]): void {
-    let html: string = '<center><h3>Calendar permissions</h3></center>';
+    let html: string = '';
     items.forEach((item: CalendarPermission) => {
       html += `
       <div id="listitem${findIndex(items, item)}">
         <ul class="${styles.list}">
           <li class="${styles.listItem}">
-            <span class="ms-font-l">Address: <strong>${item.PrimaryEmailAddress}</strong></span><p>Access level: <strong>${item.AccessLevel}</strong></p> <p>Permission via: <strong>${item.PermissionVia}</strong></p>
+            <span class="ms-font-l">Name: <strong>${item.DisplayName}</strong></span><br>
+            <span class="ms-font-l">Address: <strong>${item.PrimaryEmailAddress}</strong></span><br>Access level: <strong>${item.AccessLevel}</strong><br>Permission via: <strong>${item.PermissionVia}</strong><br>
             <fluent-button class="deleteButton" appearance="accent" data-action="remove" data-id="listitem${findIndex(items, item)}">Remove my access</fluent-button>
             <div class="" id="listitemdeleting${findIndex(items, item)}"></div>
           </li>

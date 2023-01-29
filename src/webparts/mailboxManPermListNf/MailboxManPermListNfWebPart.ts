@@ -33,15 +33,6 @@ interface MailboxPermissionRequest {
 
 export default class MailboxManPermListNfWebPart extends BaseClientSideWebPart<IMailboxManPermListNfWebPartProps> {
 
-
-  private _getUserDomain(): string {
-    let userDomain: string = '';
-    if (this.context.pageContext.user.email) {
-      userDomain = this.context.pageContext.user.email.split('@')[1];
-    }
-    return userDomain;
-  }
-
   public render(): void {
     this.domElement.innerHTML = `
     <section>
@@ -100,11 +91,17 @@ export default class MailboxManPermListNfWebPart extends BaseClientSideWebPart<I
       const searchBox: HTMLInputElement = this.domElement.querySelector('#mailboxPermissionSearch');
       this._getMailboxPermissions(searchBox.value).then((items: MailboxPermissionRequest[]) => {
         this._renderMailboxPermissions(items);
-    });
+      });
     });
   }
 
-
+  private _getUserDomain(): string {
+    let userDomain: string = '';
+    if (this.context.pageContext.user.email) {
+      userDomain = this.context.pageContext.user.email.split('@')[1];
+    }
+    return userDomain;
+  }
 
   protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {
     if (!currentTheme) {

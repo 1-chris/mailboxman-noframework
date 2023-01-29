@@ -56,11 +56,8 @@ export default class MailboxManPermListNfWebPart extends BaseClientSideWebPart<I
     this._setButtonEventHandlers();
   }
 
-  // handle the search button click
-
   private _renderMailboxPermissions(items: MailboxPermissionRequest[]): void {
     let html: string = `<fluent-tree-view>`;
-    // using fluentui
     items.forEach((item: MailboxPermissionRequest) => {
       html += `
       <fluent-tree-item expanded appearance="accent">
@@ -79,14 +76,10 @@ export default class MailboxManPermListNfWebPart extends BaseClientSideWebPart<I
     });
 
     html += `</fluent-tree-view>`;
-
     const listContainer: Element = this.domElement.querySelector('#mailboxPermissionGridContainer');
     listContainer.innerHTML = html;
     document.getElementById('loading').innerHTML = '';
-    // set button event handlers
-    //this._setButtonEventHandlers();
   }
-
 
   private _getMailboxPermissions(mailAddress: string): Promise<MailboxPermissionRequest[]> {
     return this.context.aadHttpClientFactory.getClient('api://ca6525e8-f700-4f8b-95ab-053387edf950')
@@ -100,7 +93,7 @@ export default class MailboxManPermListNfWebPart extends BaseClientSideWebPart<I
         return response;
       });
   }
-//document.getElementById('mailboxPermissionGridContainer').innerHTML = '';
+
   private _setButtonEventHandlers(): void {
     const searchButton: Element = this.domElement.querySelector('#mailboxPermissionSearchButton');
     searchButton.addEventListener('click', () => {

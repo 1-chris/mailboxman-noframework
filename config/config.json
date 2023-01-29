@@ -1,0 +1,27 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "mailbox-man-nf-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/mailboxManNf/MailboxManNfWebPart.js",
+          "manifest": "./src/webparts/mailboxManNf/MailboxManNfWebPart.manifest.json"
+        }
+      ]
+    },
+    "mailbox-man-perm-list-nf-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/mailboxManPermListNf/MailboxManPermListNfWebPart.js",
+          "manifest": "./src/webparts/mailboxManPermListNf/MailboxManPermListNfWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "MailboxManNfWebPartStrings": "lib/webparts/mailboxManNf/loc/{locale}.js",
+    "MailboxManPermListNfWebPartStrings": "lib/webparts/mailboxManPermListNf/loc/{locale}.js"
+  }
+}

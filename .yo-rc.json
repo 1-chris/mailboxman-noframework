@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": false,
+    "nodeVersion": "16.19.0",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.4.1"
+    },
+    "version": "1.16.1",
+    "libraryName": "mailboxman-noframework",
+    "libraryId": "0e7c207c-899b-4a7a-a1a0-fda88c815d69",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "mailboxman-noframework",
+    "solutionShortDescription": "mailboxman-noframework description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "mailboxman-noframework-client-side-solution",
+    "id": "0e7c207c-899b-4a7a-a1a0-fda88c815d69",
+    "version": "1.0.1.1",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "webApiPermissionRequests": [
+      {
+        "resource": "chjb-mailmanage",
+        "scope": "user_impersonation"
+      }
+    ],
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.16.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "mailboxman-noframework description"
+      },
+      "longDescription": {
+        "default": "mailboxman-noframework description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "mailboxman-noframework Feature",
+        "description": "The feature that activates elements of the mailboxman-noframework solution.",
+        "id": "f3da7206-fcd5-41c5-8eca-70fe579e2314",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/mailboxman-noframework.sppkg"
+  }
+}

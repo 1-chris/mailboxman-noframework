@@ -3,7 +3,7 @@
   "solution": {
     "name": "mailboxman-noframework-client-side-solution",
     "id": "0e7c207c-899b-4a7a-a1a0-fda88c815d69",
-    "version": "1.0.1.1",
+    "version": "1.0.1.2",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "webApiPermissionRequests": [
